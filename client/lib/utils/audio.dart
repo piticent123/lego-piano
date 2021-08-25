@@ -1,28 +1,12 @@
 import 'package:just_audio/just_audio.dart';
+import 'package:tonic/tonic.dart';
 
-final _notes = [
-  "c",
-  "c-",
-  "d",
-  "d-",
-  "e",
-  "f",
-  "f-",
-  "g",
-  "g-",
-  "a",
-  "a-",
-  "b",
-];
 final _players = List.empty(growable: true);
 
 void init() async {
-  for (var i = 0; i < 25; i++) {
-    var note = _notes[i % 12];
-    var octave = (i / 12).floor() + 3;
-
+  for (var p = Pitch.parse("c4"); p != Pitch.parse("c6"); p += Interval.fromSemitones(1)) {
     var player = AudioPlayer();
-    await player.setAsset("assets/audio/$note$octave.mp3");
+    await player.setAsset("assets/audio/$p.mp3");
     _players.add(player);
   }
 }
