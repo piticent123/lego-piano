@@ -13,7 +13,7 @@ bluetooth.advertise_service(
     service_id=uuid,
     service_classes=[uuid, bluetooth.SERIAL_PORT_CLASS],
     profiles=[bluetooth.SERIAL_PORT_PROFILE]
-    )
+)
 
 print("Waiting for connection on RFCOMM channel", port)
 
